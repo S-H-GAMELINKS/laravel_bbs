@@ -37,4 +37,24 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-12">
+
+            <form action="/tweets/{{ $tweet->id }}/comments" method="POST">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="form-group @if($errors->has('content')) has-error @endif">
+                       <label for="content-field">Coment</label>
+                    <textarea class="form-control" id="content-field" rows="3" name="content">{{ old("content") }}</textarea>
+                       @if($errors->has("content"))
+                        <span class="help-block">{{ $errors->first("content") }}</span>
+                       @endif
+                    </div>
+                <div class="well well-sm">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
 @endsection

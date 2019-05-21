@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('tweets', 'TweetController');
+Route::post('/tweets/{id}/comments', 'CommentController@store');
