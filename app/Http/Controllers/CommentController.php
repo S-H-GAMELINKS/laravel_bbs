@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use App\Tweet;
 
 class CommentController extends Controller
 {
@@ -14,8 +15,8 @@ class CommentController extends Controller
 		$comment->content = $request->input("content");
         $comment->tweet_id = $id;
 
-		$comment->save();
+        $comment->save();
 
-		return redirect()->route('tweets.index')->with('message', 'Comment created successfully.');
+		return redirect()->route('tweets.show', ['id' => $id])->with('message', 'Comment created successfully.');
 	}
 }
