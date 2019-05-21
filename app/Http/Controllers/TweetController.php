@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Tweet;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class TweetController extends Controller {
@@ -57,8 +58,9 @@ class TweetController extends Controller {
 	public function show($id)
 	{
 		$tweet = Tweet::findOrFail($id);
+		$comments = Comment::where('tweet_id', $id)->get();
 
-		return view('tweets.show', compact('tweet'));
+		return view('tweets.show', compact('tweet', 'comments'));
 	}
 
 	/**
